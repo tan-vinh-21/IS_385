@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chạy chữ "Không có gì ở đây"</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        .text {
+            position: absolute;
+            font-size: 64px;
+            font-weight: bold;
+            color: white;
+            white-space: nowrap;
+            animation: moveText 7s linear infinite;
+        }
+        @keyframes moveText {
+            from {
+                transform: translateX(-100vw) translateY(-100vh) rotate(0deg);
+            }
+            to {
+                transform: translateX(100vw) translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const createTextElement = () => {
+            const textElement = document.createElement('div');
+            textElement.className = 'text';
+            textElement.innerText = 'Không có gì ở đây';
+            textElement.style.top = `${Math.random() * 100}vh`;
+            textElement.style.left = `${Math.random() * 100}vw`;
+            textElement.style.fontSize = `${Math.random() * 40 + 40}px`;
+            textElement.style.animationDuration = `${Math.random() * 4 + 3}s`;
+            document.body.appendChild(textElement);
+
+            // Remove element after animation ends
+            setTimeout(() => textElement.remove(), 7000);
+        };
+
+        // Continuously create new text elements
+        setInterval(createTextElement, 400);
+    </script>
+</body>
+</html>
